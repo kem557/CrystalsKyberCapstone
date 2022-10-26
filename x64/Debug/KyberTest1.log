@@ -1,0 +1,3 @@
+﻿  Source.c
+D:\Users\charl\Source\Repos\CrystalsKyberCapstone\Source.c(31,27): warning C4013: 'compare_shared_secret' undefined; assuming extern returning int
+  KyberTest1.vcxproj -> D:\Users\charl\Source\Repos\CrystalsKyberCapstone\x64\Debug\KyberTest1.exe

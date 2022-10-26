@@ -1,0 +1,13 @@
+﻿  Source.c
+Source.obj : error LNK2001: unresolved external symbol _OQS_MEM_cleanse
+Source.obj : error LNK2001: unresolved external symbol _OQS_KEM_keypair
+Source.obj : error LNK2001: unresolved external symbol _OQS_MEM_insecure_free
+Source.obj : error LNK2001: unresolved external symbol _OQS_KEM_kyber_512_encaps
+Source.obj : error LNK2001: unresolved external symbol _OQS_KEM_encaps
+Source.obj : error LNK2001: unresolved external symbol _OQS_KEM_decaps
+Source.obj : error LNK2001: unresolved external symbol _OQS_KEM_new
+Source.obj : error LNK2001: unresolved external symbol _OQS_KEM_kyber_512_decaps
+Source.obj : error LNK2001: unresolved external symbol _OQS_KEM_free
+Source.obj : error LNK2001: unresolved external symbol _OQS_KEM_kyber_512_keypair
+Source.obj : error LNK2001: unresolved external symbol _OQS_MEM_secure_free
+D:\Users\charl\Source\Repos\CrystalsKyberCapstone\Release\KyberTest1.exe : fatal error LNK1120: 11 unresolved externals

@@ -1,0 +1,12 @@
+﻿Source.obj : error LNK2019: unresolved external symbol _OQS_MEM_cleanse referenced in function _cleanup_stack
+Source.obj : error LNK2019: unresolved external symbol _OQS_MEM_secure_free referenced in function _cleanup_heap
+Source.obj : error LNK2019: unresolved external symbol _OQS_MEM_insecure_free referenced in function _cleanup_heap
+Source.obj : error LNK2019: unresolved external symbol _OQS_KEM_new referenced in function _example_heap
+Source.obj : error LNK2019: unresolved external symbol _OQS_KEM_keypair referenced in function _example_heap
+Source.obj : error LNK2019: unresolved external symbol _OQS_KEM_encaps referenced in function _example_heap
+Source.obj : error LNK2019: unresolved external symbol _OQS_KEM_decaps referenced in function _example_heap
+Source.obj : error LNK2019: unresolved external symbol _OQS_KEM_free referenced in function _cleanup_heap
+Source.obj : error LNK2019: unresolved external symbol _OQS_KEM_kyber_512_keypair referenced in function _example_stack
+Source.obj : error LNK2019: unresolved external symbol _OQS_KEM_kyber_512_encaps referenced in function _example_stack
+Source.obj : error LNK2019: unresolved external symbol _OQS_KEM_kyber_512_decaps referenced in function _example_stack
+D:\Users\charl\Source\Repos\CrystalsKyberCapstone\liboqs\lib\liboqs.a : fatal error LNK1136: invalid or corrupt file
