@@ -54,7 +54,7 @@ int main(void) {
 		for (int i = 0; i < sizeof(secret_key); i++)
 			printf("%02X", secret_key[i]);
 		printf("\n\n");
-		printf("\n\Ciphertext Size: %d\n", ciphertext_len);
+		printf("\n\nCiphertext Size: %d\n", ciphertext_len);
 		printf("Ciphertext: \n");
 		for (int i = 0; i < ciphertext_len; i++)
 			printf("%02X", ciphertext[i]);
