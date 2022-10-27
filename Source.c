@@ -31,7 +31,7 @@ int main(void) {
 	uint8_t secret_key[OQS_KEM_kyber_512_length_secret_key];
 	uint8_t ciphertext[OQS_KEM_kyber_512_length_ciphertext];
 	uint8_t message1[OQS_KEM_kyber_512_length_shared_secret] = { "" };
-	fread(message1,fileSize, 2, fp);
+	fread(message1,fileSize, 1, fp);
 	uint8_t message2[OQS_KEM_kyber_512_length_shared_secret] = { "" };
 
 	rc = OQS_KEM_kyber_512_keypair(public_key, secret_key);
