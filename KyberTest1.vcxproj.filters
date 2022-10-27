@@ -19,7 +19,4 @@
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
-  <ItemGroup>
-    <Library Include="liboqs-x64-Debug\lib\oqs.lib" />
-  </ItemGroup>
 </Project>
