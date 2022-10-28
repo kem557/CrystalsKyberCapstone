@@ -35,7 +35,8 @@ int main(void) {
 	size_t encoded_size;
 	size_t decoded_size;
 	uint8_t file_text[30000] = { "" };
-	f_input = fopen("./input/message.txt","r");
+	uint8_t output_file_text[30000] = "";
+	f_input = fopen("./input/message2.txt","r");
 	
 	// check file size
 	fseek(f_input, 0L, SEEK_END);
@@ -77,9 +78,12 @@ int main(void) {
 		file_text[i] = 0x0;
 	}
 
+	// clear encoded ciphertext
+	encoded = "";
+
 	// decrypt ciphertext and append to output file ./outputs/decryption/message.txt
 	f_encryption = fopen("./Outputs/Encryption/ciphertext.txt", "r");
-	f_decryption = fopen("./Outputs/Decryption/message.txt", "w+");
+	f_decryption = fopen("./Outputs/Decryption/message.txt", "w");
 	// check file size
 	fseek(f_encryption, 0L, SEEK_END);
 	fileSize = 0;
@@ -90,10 +94,9 @@ int main(void) {
 	fread(file_text, fileSize, 1, f_encryption);
 	fclose(f_encryption);
 
-	
+	// index through encoded file
 	i = 0;
 	j = 0;
-	
 	uint8_t decrypted_message[OQS_KEM_kyber_512_length_shared_secret] = {""};
 	while (i < fileSize-1) {
 		for (j = 0; j < 1024; j += 1) {
@@ -104,12 +107,14 @@ int main(void) {
 		encoded_size = sizeof(encoded_cipher);
 		decoded = b64_decode(encoded_cipher, encoded_size);
 		rc = OQS_KEM_kyber_512_decrypt(decrypted_message, decoded, secret_key);
-		fprintf(f_decryption, "%s", decrypted_message);
+		for (k = 0; k < 32; k++) strncat(output_file_text, &decrypted_message[k], 1);
 		i += 1024;
 	}
 	for (k = 0; k < fileSize; k++) {
 		file_text[k] = 0x0;
 	}
+	fprintf(f_decryption, "%s", output_file_text);
+	printf("%s", output_file_text);
 	fclose(f_decryption);
 	
 	//rc = OQS_KEM_kyber_512_decrypt(message2, ciphertext, secret_key);
