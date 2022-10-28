@@ -6,7 +6,6 @@
 #include "b64/b64.h"
 #include <oqs/oqs.h>
 #include <oqs/kem_kyber.h>
-#define NELEMS(x)  (sizeof(x) / sizeof(x[0]))
 #pragma warning(disable : 4996)
 #pragma warning(disable : 6386)
 
@@ -36,7 +35,7 @@ int main(void) {
 	size_t encoded_size;
 	size_t decoded_size;
 	uint8_t file_text[30000] = { "" };
-	f_input = fopen("./input/message2.txt","r");
+	f_input = fopen("./input/message.txt","r");
 	
 	// check file size
 	fseek(f_input, 0L, SEEK_END);
