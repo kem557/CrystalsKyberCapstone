@@ -24,7 +24,7 @@ int main(void) {
 	FILE* f_decryption;
 	size_t fileSize;
 	uint8_t* decoded = malloc(768);
-	uint8_t* encoded;
+	uint8_t* encoded = malloc(1024);
 	size_t encoded_size;
 	size_t decoded_size;
 	uint8_t buffer[1024];
@@ -53,6 +53,7 @@ int main(void) {
 		for (k = 0; k < 32; k++) buffer32[k] = 0x0;
 		fread(buffer32, 1, 32, f_input);
 		rc = OQS_KEM_kyber_512_encrypt(ciphertext1, buffer32, public_key);
+		free(encoded);
 		encoded = b64_encode(ciphertext1, sizeof(ciphertext1));
 		fprintf(f_encryption, "%s", encoded);
 
