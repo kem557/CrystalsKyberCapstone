@@ -9,13 +9,6 @@
 #pragma warning(disable : 4996)
 #pragma warning(disable : 6386)
 
-/* Cleaning up memory etc */
-void cleanup_stack(uint8_t* ciphertext, size_t ciphertext_len,
-	uint8_t* public_key, size_t public_key_len,
-	uint8_t* secret_key, size_t secret_key_len,
-	uint8_t* shared_secret1, uint8_t* shared_secret2,
-	size_t shared_secret_len);
-
 int main(void) {
 	// kyber512-PKE
 	OQS_STATUS rc;
@@ -25,18 +18,19 @@ int main(void) {
 	uint8_t ciphertext2[OQS_KEM_kyber_512_length_ciphertext] = {""};
 	uint8_t message[OQS_KEM_kyber_512_length_shared_secret] = { "" };
 	uint8_t encoded_cipher[1024];
-	// read ./input/message.txt
+	// read ./input/message-2mb.txt
 	FILE* f_input;
 	FILE* f_encryption;
 	FILE* f_decryption;
 	size_t fileSize;
-	uint8_t* decoded;
+	uint8_t* decoded = malloc(768);
 	uint8_t* encoded;
 	size_t encoded_size;
 	size_t decoded_size;
-	uint8_t file_text[30000] = { "" };
-	uint8_t output_file_text[30000] = "";
-	f_input = fopen("./input/message2.txt","r");
+	uint8_t buffer[1024];
+	uint8_t buffer32[32];
+	char* output_file_text[32];
+	f_input = fopen("./input/lotus.jpg","rb");
 	
 	// check file size
 	fseek(f_input, 0L, SEEK_END);
@@ -44,10 +38,7 @@ int main(void) {
 	if (ftell(f_input) > 0) {
 		fileSize = ftell(f_input);
 	}
-	fseek(f_input, 0L, SEEK_SET);
-	
-	fread(file_text, fileSize, 1, f_input);
-	fclose(f_input);
+	fseek(f_input, 0L, SEEK_SET);	
 
 	// generate public key and private key
 	rc = OQS_KEM_kyber_512_keypair(public_key, secret_key);
@@ -59,31 +50,23 @@ int main(void) {
 	int k = 0;
 	
 	while(i < fileSize) {
-		for (j = 0; j < 32; j++) {
-			if (i + j < fileSize) {
-				message[j] = file_text[i + j];
-			}
-		}
-		rc = OQS_KEM_kyber_512_encrypt(ciphertext1, message, public_key);
+		for (k = 0; k < 32; k++) buffer32[k] = 0x0;
+		fread(buffer32, 1, 32, f_input);
+		rc = OQS_KEM_kyber_512_encrypt(ciphertext1, buffer32, public_key);
 		encoded = b64_encode(ciphertext1, sizeof(ciphertext1));
-		encoded_size = strlen(encoded);
 		fprintf(f_encryption, "%s", encoded);
 
 		i += 32;
 	}
+	fclose(f_input);
 	fclose(f_encryption);
-
-	// clear file text
-	for (i = 0; i < fileSize; i++) {
-		file_text[i] = 0x0;
-	}
 
 	// clear encoded ciphertext
 	encoded = "";
 
 	// decrypt ciphertext and append to output file ./outputs/decryption/message.txt
 	f_encryption = fopen("./Outputs/Encryption/ciphertext.txt", "r");
-	f_decryption = fopen("./Outputs/Decryption/message.txt", "w");
+	f_decryption = fopen("./Outputs/Decryption/lotus.jpg", "wb+ ");
 	// check file size
 	fseek(f_encryption, 0L, SEEK_END);
 	fileSize = 0;
@@ -91,78 +74,22 @@ int main(void) {
 		fileSize = ftell(f_encryption);
 	}
 	fseek(f_encryption, 0L, SEEK_SET);
-	fread(file_text, fileSize, 1, f_encryption);
-	fclose(f_encryption);
 
 	// index through encoded file
 	i = 0;
 	j = 0;
 	uint8_t decrypted_message[OQS_KEM_kyber_512_length_shared_secret] = {""};
-	while (i < fileSize-1) {
-		for (j = 0; j < 1024; j += 1) {
-			if (i + j < fileSize) {
-				encoded_cipher[j] = file_text[i + j];
-			}
-		}
+	while (j < fileSize-1) {
+		fread(encoded_cipher, 1024, 1, f_encryption);
 		encoded_size = sizeof(encoded_cipher);
+		free(decoded);
 		decoded = b64_decode(encoded_cipher, encoded_size);
-		rc = OQS_KEM_kyber_512_decrypt(decrypted_message, decoded, secret_key);
-		for (k = 0; k < 32; k++) strncat(output_file_text, &decrypted_message[k], 1);
-		i += 1024;
+		for (k = 0; k < 32; k++) buffer32[k] = 0x0;
+		rc = OQS_KEM_kyber_512_decrypt(buffer32, decoded, secret_key);
+		for (k = 0; k < 32; k++) fprintf(f_decryption, "%c", buffer32[k]);
+		j += 1024;
 	}
-	for (k = 0; k < fileSize; k++) {
-		file_text[k] = 0x0;
-	}
-	fprintf(f_decryption, "%s", output_file_text);
-	printf("%s", output_file_text);
 	fclose(f_decryption);
-	
-	//rc = OQS_KEM_kyber_512_decrypt(message2, ciphertext, secret_key);
-
-	// compare if message1 is the same as message2
-	//if (strcmp(message1, message2) == 0) {
-	//	printf("Kyber512-PKE Successful\n");
-	//	printf("\nMessage 1: %s\nMessage 2: %s", message1, message2);
-	//	int public_key_len = sizeof(public_key);
-	//	int secret_key_len = sizeof(secret_key);
-	//	int ciphertext_len = sizeof(ciphertext);
-	//	printf("\n\nPublic Key Size: %d\n", public_key_len);
-	//	printf("Public Key:\n");
-	//	for (int i = 0; i < sizeof(public_key); i++)
-	//		printf("%02X", public_key[i]);
-	//	printf("\n\nSecret Key Size: %d\n", secret_key_len);
-	//	printf("Secret Key: \n");
-	//	for (int i = 0; i < sizeof(secret_key); i++)
-	//		printf("%02X", secret_key[i]);
-	//	printf("\n\n");
-	//	printf("\n\nCiphertext Size: %d\n", ciphertext_len);
-	//	printf("Ciphertext: \n");
-	//	for (int i = 0; i < ciphertext_len; i++)
-	//		printf("%02X", ciphertext[i]);
-	//	printf("\n\n");
-	//}
-	//else {
-	//	printf("Kyber768-PKE Unsuccessful");
-	//}
-	// clean up memory
-	//cleanup_stack(ciphertext, OQS_KEM_kyber_512_length_ciphertext,
-	//			  public_key, OQS_KEM_kyber_512_length_public_key, 
-	//	          secret_key, OQS_KEM_kyber_512_length_secret_key,
-	//			  message1, message2, OQS_KEM_kyber_512_length_shared_secret);
-	
-	// return
+	fclose(f_encryption);
 	return 0;
-}
-
-// cleans memory
-void cleanup_stack(uint8_t* ciphertext, size_t ciphertext_length,
-	uint8_t* public_key, size_t public_key_len,
-	uint8_t* secret_key, size_t secret_key_len,
-	uint8_t* shared_secret1, uint8_t* shared_secret2,
-	size_t shared_secret_len) {
-	OQS_MEM_cleanse(ciphertext, ciphertext_length);
-	OQS_MEM_cleanse(public_key, public_key_len);
-	OQS_MEM_cleanse(secret_key, secret_key_len);
-	OQS_MEM_cleanse(shared_secret1, shared_secret_len);
-	OQS_MEM_cleanse(shared_secret2, shared_secret_len);
 }
