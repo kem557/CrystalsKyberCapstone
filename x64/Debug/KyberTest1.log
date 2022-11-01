@@ -1,6 +1,1 @@
-﻿  Source.c
-D:\Users\charl\Source\Repos\CrystalsKyberCapstone\Source.c(28,9): warning C4101: 'decoded_size': unreferenced local variable
-D:\Users\charl\Source\Repos\CrystalsKyberCapstone\Source.c(32,8): warning C4101: 'output_file_text': unreferenced local variable
-D:\Users\charl\Source\Repos\CrystalsKyberCapstone\Source.c(33,8): warning C4101: 'b64_buf': unreferenced local variable
-D:\Users\charl\Source\Repos\CrystalsKyberCapstone\Source.c(29,10): warning C4101: 'buffer': unreferenced local variable
-  KyberTest1.vcxproj -> D:\Users\charl\Source\Repos\CrystalsKyberCapstone\x64\Debug\KyberTest1.exe
+﻿  KyberTest1.vcxproj -> D:\Users\charl\Source\Repos\CrystalsKyberCapstone\x64\Debug\KyberTest1.exe

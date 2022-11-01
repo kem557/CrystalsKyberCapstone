@@ -12,21 +12,21 @@
 int main(void) {
 	// kyber768-PKE
 	OQS_STATUS rc;
-	uint8_t public_key[OQS_KEM_kyber_768_length_public_key];
-	uint8_t secret_key[OQS_KEM_kyber_768_length_secret_key];
-	uint8_t ciphertext1[OQS_KEM_kyber_768_length_ciphertext] = {""};
-	uint8_t ciphertext2[OQS_KEM_kyber_768_length_ciphertext] = {""};
-	uint8_t encoded_cipher[1452];
+	uint8_t public_key[OQS_KEM_kyber_1024_length_public_key];
+	uint8_t secret_key[OQS_KEM_kyber_1024_length_secret_key];
+	uint8_t ciphertext1[OQS_KEM_kyber_1024_length_ciphertext] = {""};
+	uint8_t ciphertext2[OQS_KEM_kyber_1024_length_ciphertext] = {""};
+	uint8_t encoded_cipher[2092];
 	// read ./input/message-2mb.txt
 	FILE* f_input;
 	FILE* f_encryption;
 	FILE* f_decryption;
 	size_t fileSize;
-	uint8_t* decoded = malloc(1088);
-	uint8_t* encoded = malloc(1452);
+	uint8_t* decoded = malloc(1568);
+	uint8_t* encoded = malloc(2092);
 	size_t encoded_size;
 	size_t decoded_size;
-	uint8_t buffer[1452];
+	uint8_t buffer[2092];
 	uint8_t buffer32[32];
 	uint8_t decrypted_message[32] = "";
 	char* output_file_text[32];
@@ -42,7 +42,7 @@ int main(void) {
 	fseek(f_input, 0L, SEEK_SET);	
 
 	// generate public key and private key
-	rc = OQS_KEM_kyber_768_keypair(public_key, secret_key);
+	rc = OQS_KEM_kyber_1024_keypair(public_key, secret_key);
 
 	// append ciphertext to output file ./output/ciphertext.txt
 	f_encryption = fopen("./Outputs/Encryption/ciphertext.txt","w+");
@@ -53,7 +53,7 @@ int main(void) {
 	while(i < fileSize) {
 		for (k = 0; k < 32; k++) buffer32[k] = 0x0;
 		fread(buffer32, 1, 32, f_input);
-		rc = OQS_KEM_kyber_768_encrypt(ciphertext1, buffer32, public_key);
+		rc = OQS_KEM_kyber_1024_encrypt(ciphertext1, buffer32, public_key);
 		free(encoded);
 		encoded = b64_encode(ciphertext1, sizeof(ciphertext1));
 		fprintf(f_encryption, "%s", encoded);
@@ -81,14 +81,14 @@ int main(void) {
 	i = 0;
 	j = 0;
 	while (j < fileSize-1) {
-		fread(encoded_cipher, 1452, 1, f_encryption);
+		fread(encoded_cipher, 2092, 1, f_encryption);
 		encoded_size = sizeof(encoded_cipher);
 		free(decoded);
 		decoded = b64_decode(encoded_cipher, encoded_size);
 		for (k = 0; k < 32; k++) buffer32[k] = 0x0;
-		rc = OQS_KEM_kyber_768_decrypt(buffer32, decoded, secret_key);
+		rc = OQS_KEM_kyber_1024_decrypt(buffer32, decoded, secret_key);
 		for (k = 0; k < 32; k++) fprintf(f_decryption, "%c", buffer32[k]);
-		j += 1452;
+		j += 2092;
 	}
 	for (k = 0; k < 32; k++) buffer32[k] = 0x0;
 	fclose(f_decryption);
