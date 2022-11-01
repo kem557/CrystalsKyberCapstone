@@ -32,5 +32,71 @@
     <ClInclude Include="b64\b64.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="liboqs\include\oqs\aes.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="liboqs\include\oqs\common.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="liboqs\include\oqs\kem.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="liboqs\include\oqs\kem_classic_mceliece.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="liboqs\include\oqs\kem_frodokem.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="liboqs\include\oqs\kem_hqc.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="liboqs\include\oqs\kem_kyber.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="liboqs\include\oqs\kem_ntru.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="liboqs\include\oqs\kem_ntruprime.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="liboqs\include\oqs\kem_saber.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="liboqs\include\oqs\oqs.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="liboqs\include\oqs\oqsconfig.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="liboqs\include\oqs\rand.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="liboqs\include\oqs\sha2.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="liboqs\include\oqs\sha3.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="liboqs\include\oqs\sha3x4.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="liboqs\include\oqs\sig.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="liboqs\include\oqs\sig_dilithium.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="liboqs\include\oqs\sig_falcon.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="liboqs\include\oqs\sig_picnic.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="liboqs\include\oqs\sig_rainbow.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="liboqs\include\oqs\sig_sphincs.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

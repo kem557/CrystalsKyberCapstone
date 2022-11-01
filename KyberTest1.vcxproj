@@ -162,6 +162,28 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="b64\b64.h" />
+    <ClInclude Include="liboqs\include\oqs\aes.h" />
+    <ClInclude Include="liboqs\include\oqs\common.h" />
+    <ClInclude Include="liboqs\include\oqs\kem.h" />
+    <ClInclude Include="liboqs\include\oqs\kem_classic_mceliece.h" />
+    <ClInclude Include="liboqs\include\oqs\kem_frodokem.h" />
+    <ClInclude Include="liboqs\include\oqs\kem_hqc.h" />
+    <ClInclude Include="liboqs\include\oqs\kem_kyber.h" />
+    <ClInclude Include="liboqs\include\oqs\kem_ntru.h" />
+    <ClInclude Include="liboqs\include\oqs\kem_ntruprime.h" />
+    <ClInclude Include="liboqs\include\oqs\kem_saber.h" />
+    <ClInclude Include="liboqs\include\oqs\oqs.h" />
+    <ClInclude Include="liboqs\include\oqs\oqsconfig.h" />
+    <ClInclude Include="liboqs\include\oqs\rand.h" />
+    <ClInclude Include="liboqs\include\oqs\sha2.h" />
+    <ClInclude Include="liboqs\include\oqs\sha3.h" />
+    <ClInclude Include="liboqs\include\oqs\sha3x4.h" />
+    <ClInclude Include="liboqs\include\oqs\sig.h" />
+    <ClInclude Include="liboqs\include\oqs\sig_dilithium.h" />
+    <ClInclude Include="liboqs\include\oqs\sig_falcon.h" />
+    <ClInclude Include="liboqs\include\oqs\sig_picnic.h" />
+    <ClInclude Include="liboqs\include\oqs\sig_rainbow.h" />
+    <ClInclude Include="liboqs\include\oqs\sig_sphincs.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets" />
