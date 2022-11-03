@@ -158,7 +158,7 @@
     <ClCompile Include="b64\buffer.c" />
     <ClCompile Include="b64\decode.c" />
     <ClCompile Include="b64\encode.c" />
-    <ClCompile Include="Source.c" />
+    <ClCompile Include="demo.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="b64\b64.h" />
