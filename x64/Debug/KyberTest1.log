@@ -1,1 +1,13 @@
-﻿  KyberTest1.vcxproj -> D:\Users\charl\Source\Repos\CrystalsKyberCapstone\x64\Debug\KyberTest1.exe
+﻿  demo.c
+D:\Users\charl\Source\Repos\CrystalsKyberCapstone\demo.c(145,24): warning C4244: 'function': conversion from '__int64' to 'unsigned long', possible loss of data
+D:\Users\charl\Source\Repos\CrystalsKyberCapstone\demo.c(145,28): warning C4244: 'function': conversion from '__int64' to 'unsigned long', possible loss of data
+D:\Users\charl\Source\Repos\CrystalsKyberCapstone\demo.c(169,27): warning C4244: 'function': conversion from '__int64' to 'unsigned long', possible loss of data
+D:\Users\charl\Source\Repos\CrystalsKyberCapstone\demo.c(169,31): warning C4244: 'function': conversion from '__int64' to 'unsigned long', possible loss of data
+D:\Users\charl\Source\Repos\CrystalsKyberCapstone\demo.c(202,25): warning C4244: 'function': conversion from '__int64' to 'unsigned long', possible loss of data
+D:\Users\charl\Source\Repos\CrystalsKyberCapstone\demo.c(202,29): warning C4244: 'function': conversion from '__int64' to 'unsigned long', possible loss of data
+D:\Users\charl\Source\Repos\CrystalsKyberCapstone\demo.c(226,27): warning C4244: 'function': conversion from '__int64' to 'unsigned long', possible loss of data
+D:\Users\charl\Source\Repos\CrystalsKyberCapstone\demo.c(226,31): warning C4244: 'function': conversion from '__int64' to 'unsigned long', possible loss of data
+D:\Users\charl\Source\Repos\CrystalsKyberCapstone\demo.c(123,8): warning C4101: 'b2': unreferenced local variable
+D:\Users\charl\Source\Repos\CrystalsKyberCapstone\demo.c(121,8): warning C4101: 'r2': unreferenced local variable
+D:\Users\charl\Source\Repos\CrystalsKyberCapstone\demo.c(122,8): warning C4101: 'g2': unreferenced local variable
+  KyberTest1.vcxproj -> D:\Users\charl\Source\Repos\CrystalsKyberCapstone\x64\Debug\KyberTest1.exe
