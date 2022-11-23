@@ -88,7 +88,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)\liboqs\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)\liboqs\include;$(SolutionDir)\cbmp</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
     </ClCompile>
     <Link>
@@ -106,7 +106,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)\liboqs\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)\liboqs\include;$(SolutionDir)\cbmp</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
     </ClCompile>
     <Link>
@@ -124,7 +124,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)\liboqs\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)\liboqs\include;$(SolutionDir)\cbmp</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
     </ClCompile>
     <Link>
@@ -142,7 +142,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)\liboqs\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)\liboqs\include;$(SolutionDir)\cbmp</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
     </ClCompile>
     <Link>
@@ -158,10 +158,13 @@
     <ClCompile Include="b64\buffer.c" />
     <ClCompile Include="b64\decode.c" />
     <ClCompile Include="b64\encode.c" />
+    <ClCompile Include="cbmp\cbmp.c" />
     <ClCompile Include="demo.c" />
+    <ClCompile Include="qdbmp\qdbmp.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="b64\b64.h" />
+    <ClInclude Include="cbmp\cbmp.h" />
     <ClInclude Include="liboqs\include\oqs\aes.h" />
     <ClInclude Include="liboqs\include\oqs\common.h" />
     <ClInclude Include="liboqs\include\oqs\kem.h" />
@@ -184,6 +187,7 @@
     <ClInclude Include="liboqs\include\oqs\sig_picnic.h" />
     <ClInclude Include="liboqs\include\oqs\sig_rainbow.h" />
     <ClInclude Include="liboqs\include\oqs\sig_sphincs.h" />
+    <ClInclude Include="qdbmp\qdbmp.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets" />

@@ -27,6 +27,12 @@
     <ClCompile Include="b64\encode.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="cbmp\cbmp.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="qdbmp\qdbmp.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="b64\b64.h">
@@ -96,6 +102,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="liboqs\include\oqs\sig_sphincs.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="cbmp\cbmp.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="qdbmp\qdbmp.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
